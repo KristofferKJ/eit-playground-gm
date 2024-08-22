@@ -1,0 +1,86 @@
+# Ignore everything in source but the .rosinstall
+doc/wiki*
+!src/.rosinstall
+
+# Python
+*.pyc
+
+# Documentation
+.build
+.static
+
+# Autosaved files
+*~
+*.bak
+
+# ROS
+/build
+/devel
+/logs
+/install
+
+# IDE
+*.idea
+*.sublime-*
+
+# Catkin
+.catkin_tools
+
+# Android App
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+#NDK
+obj/
+
+# built native files (uncomment if you build your own)
+*.o
+*.so
+
+.directory
+
+# Qt Creator
+*.config
+*.creator*
+*.files
+*.includes
+*.workspace*
+
+# Ardupilot
+*.parm
+*.tlog
+*.tlog.raw
+eeprom.bin
+/terrain
+
+# VS Code
+/.vscode

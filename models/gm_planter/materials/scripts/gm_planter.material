@@ -1,0 +1,14 @@
+material gm_planter/planter
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture planter.png
+				scale 1 0.375
+			}
+		}
+	}
+}
