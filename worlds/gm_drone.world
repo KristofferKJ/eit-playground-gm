@@ -90,6 +90,14 @@
       </include>
     </model>
 
+    <!-- ArUco markers on the ground -->
+    <model name="aruco_100">
+      <pose> 3 0 0.81 0 0 0</pose>
+      <include>
+        <uri>model://aruco_100</uri>
+      </include>
+    </model>
+
     <!-- Left wall -->
     <model name="left_wall">
         <pose> 0 4 1.5 0 </pose>
