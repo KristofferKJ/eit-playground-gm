@@ -595,7 +595,6 @@
           <motorSpeedPubTopic>/motor_speed/3</motorSpeedPubTopic>
           <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
         </plugin>
-
     <model name='gps0'>
       <link name='link'>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -644,6 +643,7 @@
       <parent>base_link</parent>
       <child>gps0::link</child>
     </joint>
+
     <plugin name='groundtruth_plugin' filename='libgazebo_groundtruth_plugin.so'>
       <robotNamespace/>
     </plugin>
@@ -667,6 +667,20 @@
       <motorNumber>6</motorNumber>
     </plugin>
 
+    <plugin name='ros_ground_truth' filename='libgazebo_ros_p3d.so'>
+      <always_on>true</always_on>
+      <update_rate>30.0</update_rate>
+      <body_name>base_link</body_name>
+      <topic_name>ground_truth/pose</topic_name>
+      <gaussian_noise>0.0</gaussian_noise>
+      <frame_name>map</frame_name>
+    </plugin>
+
+    <!--
+    <xyzOffsets>0 0 0</xyzOffsets>
+    <rpyOffsets>0 0 0</rpyOffsets>
+    -->
+
     <plugin name='mavlink_interface' filename='libgazebo_mavlink_interface.so'>
       <robotNamespace></robotNamespace>
       <imuSubTopic>/imu</imuSubTopic>
@@ -686,7 +700,7 @@
       <hil_state_level>0</hil_state_level>
       <vehicle_is_tailsitter>0</vehicle_is_tailsitter>
       <send_vision_estimation>1</send_vision_estimation>
-      <send_odometry>0</send_odometry>
+      <send_odometry>1</send_odometry>
       <enable_lockstep>1</enable_lockstep>
       <use_tcp>1</use_tcp>
       <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
@@ -1006,6 +1020,35 @@
         </dynamics>
         <use_parent_model_frame>1</use_parent_model_frame>
       </axis>
+    </joint>
+
+    <!--px4flow camera-->
+    <include>
+      <uri>model://px4flow</uri>
+      <pose>0.05 0 -0.15 0 0 0</pose>
+    </include>
+
+    <joint name="px4flow_joint" type="revolute">
+      <parent>iris::base_link</parent>
+      <child>px4flow::link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+
+    <!--lidar-->
+    <include>
+      <uri>model://lidar</uri>
+      <pose>0 0 -0.15 0 0 0</pose>
+    </include>
+
+    <joint name="lidar_joint" type="fixed">
+      <parent>iris::base_link</parent>
+      <child>lidar::link</child>
     </joint>
 
   </model>
